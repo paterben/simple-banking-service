@@ -1,0 +1,4 @@
+{
+    "files.insertFinalNewline": true,
+    "dotnet.defaultSolution": "SimpleBankingService.slnx",
+}

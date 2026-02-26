@@ -16,3 +16,14 @@ git clone https://github.com/paterben/simple-banking-service.git
 
 Building the repo requires the .NET 10 SDK, available at https://dotnet.microsoft.com/en-us/download/dotnet/10.0.
 
+You can open the solution in Visual Studio (untested) or VSCode, or build and run it from the top-level directory:
+
+```shell
+dotnet run --project SimpleBankingService
+```
+
+To see all possible command-line arguments, run:
+
+```shell
+dotnet run --project SimpleBankingService -- --help`.
+```
