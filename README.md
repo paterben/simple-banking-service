@@ -28,6 +28,12 @@ To see all possible command-line arguments, run:
 dotnet run --project SimpleBankingService -- --help
 ```
 
+You can run all tests with:
+
+```shell
+dotnet test
+```
+
 ## TODO
 
 *   Improve README.md: features, assumptions, future work, AI statement
