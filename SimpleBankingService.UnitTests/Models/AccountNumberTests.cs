@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using SimpleBankingService.Models;
 
-namespace SimpleBankingService.UnitTests;
+namespace SimpleBankingService.UnitTests.Models;
 
 [TestClass]
 public sealed class AccountNumberTests

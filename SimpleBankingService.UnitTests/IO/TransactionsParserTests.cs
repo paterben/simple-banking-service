@@ -3,7 +3,7 @@ using FluentAssertions;
 using SimpleBankingService.IO;
 using SimpleBankingService.Models;
 
-namespace SimpleBankingService.UnitTests;
+namespace SimpleBankingService.UnitTests.IO;
 
 [TestClass]
 public sealed class TransactionsParserTests
