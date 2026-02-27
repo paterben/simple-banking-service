@@ -30,5 +30,4 @@ dotnet run --project SimpleBankingService -- --help
 
 ## TODO
 
-*   End to end tests
 *   Improve README.md: features, assumptions, future work, AI statement
