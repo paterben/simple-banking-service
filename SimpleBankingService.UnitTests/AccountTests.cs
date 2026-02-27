@@ -7,7 +7,7 @@ namespace SimpleBankingService.UnitTests;
 public sealed class AccountTests
 {
     [TestMethod]
-    public void AccountPropertiesTest()
+    public void Constructor_Works()
     {
         Account account = new(new AccountNumber(1), 100.00M);
         account.Number.Should().Be(new AccountNumber(1));
@@ -15,14 +15,14 @@ public sealed class AccountTests
     }
 
     [TestMethod]
-    public void ToStringTest()
+    public void ToString_Works()
     {
         Account account = new(new AccountNumber(12345), 100.00M);
         account.ToString().Should().Be("Account: Number=0000000000012345, Balance=100.00");
     }
 
     [TestMethod]
-    public void ConstructorNegativeBalanceThrowsTest()
+    public void Constructor_WhenNegativeBalance_Throws()
     {
         var action = () => new Account(new AccountNumber(1), -1.00M);
         action
@@ -31,7 +31,7 @@ public sealed class AccountTests
     }
 
     [TestMethod]
-    public void ApplyPositiveAmountToBalanceTest()
+    public void ApplyToBalance_WhenPositiveAmount_Works()
     {
         Account account = new(new AccountNumber(1), 100.00M);
         Assert.IsTrue(account.CanApplyToBalance(1.02M));
@@ -40,7 +40,7 @@ public sealed class AccountTests
     }
 
     [TestMethod]
-    public void ApplyZeroToBalanceTest()
+    public void ApplyToBalance_WhenZeroAmount_Works()
     {
         Account account = new(new AccountNumber(1), 100.00M);
         Assert.IsTrue(account.CanApplyToBalance(0M));
@@ -49,7 +49,7 @@ public sealed class AccountTests
     }
 
     [TestMethod]
-    public void ApplyZeroToZeroBalanceTest()
+    public void ApplyToBalance_WhenZeroBalanceAndZeroAmount_Works()
     {
         Account account = new(new AccountNumber(1), 0M);
         Assert.IsTrue(account.CanApplyToBalance(0M));
@@ -58,7 +58,7 @@ public sealed class AccountTests
     }
 
     [TestMethod]
-    public void ApplyNegativeAmountToSufficentBalanceTest()
+    public void ApplyToBalance_WhenSufficientBalanceAndNegativeAmount_Works()
     {
         Account account = new(new AccountNumber(1), 100.00M);
         Assert.IsTrue(account.CanApplyToBalance(-1.02M));
@@ -67,7 +67,7 @@ public sealed class AccountTests
     }
 
     [TestMethod]
-    public void ApplyNegativeAmountEntireBalanceTest()
+    public void ApplyToBalance_WhenEntireBalanceAndNegativeAmount_Works()
     {
         Account account = new(new AccountNumber(1), 100.00M);
         Assert.IsTrue(account.CanApplyToBalance(-100.00M));
@@ -76,7 +76,7 @@ public sealed class AccountTests
     }
 
     [TestMethod]
-    public void ApplyNegativeAmountToInsufficentBalanceThrowsTest()
+    public void ApplyToBalance_WhenInsufficientBalanceAndNegativeAmount_Throws()
     {
         Account account = new(new AccountNumber(1), 100.00M);
         Assert.IsFalse(account.CanApplyToBalance(-100.01M));
@@ -88,7 +88,7 @@ public sealed class AccountTests
     }
 
     [TestMethod]
-    public void ApplyMultipleAmountsTest()
+    public void ApplyToBalance_MultipleAmounts_Works()
     {
         Account account = new(new AccountNumber(1), 100.00M);
         account.ApplyToBalance(50.00M);
@@ -99,7 +99,7 @@ public sealed class AccountTests
     }
 
     [TestMethod]
-    public void BalanceOverflowThrowsTest()
+    public void ApplyToBalance_WhenBalanceOverflows_Throws()
     {
         Account account = new(new AccountNumber(1), decimal.MaxValue - 10M);
         var action = () => account.ApplyToBalance(50.00M);

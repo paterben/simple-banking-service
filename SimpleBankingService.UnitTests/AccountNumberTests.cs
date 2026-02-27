@@ -7,7 +7,7 @@ namespace SimpleBankingService.UnitTests;
 public sealed class AccountNumberTests
 {
     [TestMethod]
-    public void AccountNumbersWithSameValueAreEqualTest()
+    public void AreEqual_WhenSameValue_ReturnsTrue()
     {
         AccountNumber accountNumber1 = new(1);
         AccountNumber accountNumber2 = new(1);
@@ -15,7 +15,7 @@ public sealed class AccountNumberTests
     }
 
     [TestMethod]
-    public void AccountNumbersWithDifferentValueAreNotEqualTest()
+    public void AreEqual_WhenDifferentValue_ReturnsFalse()
     {
         AccountNumber accountNumber1 = new(1);
         AccountNumber accountNumber2 = new(2);
@@ -23,7 +23,7 @@ public sealed class AccountNumberTests
     }
 
     [TestMethod]
-    public void ConstructorNegativeNumberThrowsTest()
+    public void Constructor_WhenNegativeAccountNumber_Throws()
     {
         var action = () => new AccountNumber(-1);
         action
@@ -32,7 +32,7 @@ public sealed class AccountNumberTests
     }
 
     [TestMethod]
-    public void ToStringTest()
+    public void ToString_Works()
     {
         new AccountNumber(12345).ToString().Should().Be("0000000000012345");
         new AccountNumber(1234567890123456).ToString().Should().Be("1234567890123456");
@@ -40,7 +40,7 @@ public sealed class AccountNumberTests
     }
 
     [TestMethod]
-    public void TryParse_ValidNumbersTest()
+    public void TryParse_WhenValidAccountNumber_Works()
     {
         Assert.IsTrue(AccountNumber.TryParse("12345", out AccountNumber accountNumber));
         accountNumber.Value.Should().Be(12345);
@@ -55,7 +55,7 @@ public sealed class AccountNumberTests
     }
 
     [TestMethod]
-    public void TryParse_NegativeNumbersTest()
+    public void TryParse_WhenNegativeAccountNumber_ReturnsFalse()
     {
         Assert.IsFalse(AccountNumber.TryParse("-1", out _));
         Assert.IsFalse(AccountNumber.TryParse("-12345", out _));
@@ -66,7 +66,7 @@ public sealed class AccountNumberTests
     }
 
     [TestMethod]
-    public void TryParse_TooManyDigitsNumbersTest()
+    public void TryParse_WhenTooManyDigitsAccountNumber_ReturnsFalse()
     {
         Assert.IsFalse(AccountNumber.TryParse("10000000000000000", out _));
         Assert.IsFalse(AccountNumber.TryParse("12345678901234567", out _));
@@ -74,7 +74,7 @@ public sealed class AccountNumberTests
     }
 
     [TestMethod]
-    public void TryParse_BadDataTest()
+    public void TryParse_WhenBadFormatAccountNumber_ReturnsFalse()
     {
         Assert.IsFalse(AccountNumber.TryParse("", out _));
         Assert.IsFalse(AccountNumber.TryParse("1234aa", out _));
