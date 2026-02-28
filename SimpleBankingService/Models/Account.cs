@@ -1,7 +1,7 @@
 namespace SimpleBankingService.Models;
 
 /// <summary>
-/// Core account and running balance representation.
+/// Core account representation.
 /// </summary>
 public class Account
 {
@@ -12,11 +12,19 @@ public class Account
         Balance = balance;
     }
 
+    /// <summary>
+    /// The account number.
+    /// </summary>
     public AccountNumber Number { get; private set; }
 
-    // Must always be >= 0.
+    /// <summary>
+    /// The running balance of the account. Must always be >= 0.
+    /// </summary>
     public decimal Balance { get; private set; }
 
+    /// <summary>
+    /// Checks whether <see cref="ApplyToBalance"/> can safely be called.
+    /// </summary>
     public bool CanApplyToBalance(decimal amount)
     {
         // Any positive amount can be applied.
@@ -24,6 +32,10 @@ public class Account
         return amount >= 0 || Balance >= -amount;
     }
 
+    /// <summary>
+    /// Applies (adds) the amount to the account balance.
+    /// Throws if the amount is negative and the account has insufficient balance.
+    /// </summary>
     public decimal ApplyToBalance(decimal amount)
     {
         if (!CanApplyToBalance(amount))

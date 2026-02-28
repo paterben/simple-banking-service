@@ -13,10 +13,19 @@ public class Transaction
         Amount = amount;
     }
 
+    /// <summary>
+    /// Account the amount will be debited from.
+    /// </summary>
     public AccountNumber FromAccount { get; }
 
+    /// <summary>
+    /// Account the amount will be credited to.
+    /// </summary>
     public AccountNumber ToAccount { get; }
 
+    /// <summary>
+    /// Transaction amount. Must always be >= 0.
+    /// </summary>
     public decimal Amount { get; }
 
     public override string ToString()

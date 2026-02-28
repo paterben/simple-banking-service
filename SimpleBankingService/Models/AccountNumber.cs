@@ -1,7 +1,9 @@
 namespace SimpleBankingService.Models;
 
 /// <summary>
-/// Simple value-type wrapper around account numbers, used to ensure consistent 16-digit representation.
+/// Core account number representation.
+/// 
+/// This is simple value-type wrapper around the actual account number, used to ensure consistent 16-digit representation.
 /// </summary>
 public readonly record struct AccountNumber
 {
@@ -11,8 +13,14 @@ public readonly record struct AccountNumber
         Value = value;
     }
 
+    /// <summary>
+    /// The actual account number.
+    /// </summary>
     public long Value { get; }
 
+    /// <summary>
+    /// Returns the 16-digit string representation of the account number.
+    /// </summary>
     public override string ToString()
     {
         return $"{Value:D16}";
@@ -22,9 +30,9 @@ public readonly record struct AccountNumber
     /// Tries to parse an account number from a string.
     /// Supports any integer representation up to 16 digits long, i.e. the following
     /// string representations are supported and are parsed to the same account number:
-    /// - "0000000000123456"
-    /// - "123456"
+    /// "0000000000123456", "123456".
     /// </summary>
+    /// <returns>True if parsing was successful, false otherwise.</returns>
     public static bool TryParse(string accountNumberStr, out AccountNumber accountNumber)
     {
         accountNumber = new AccountNumber(0);
