@@ -4,7 +4,7 @@ using SimpleBankingService.Models;
 namespace SimpleBankingService.UnitTests;
 
 [TestClass]
-public sealed class TransactionProcessorTests
+public sealed class TransactionProcessorCoreTests
 {
     [TestMethod]
     public void ApplyTransactionsToAccounts_WhenValidTransactions_Works()
@@ -30,7 +30,7 @@ public sealed class TransactionProcessorTests
             new Transaction(accountNum3, accountNum2, 650.00M),
         ];
 
-        TransactionProcessor.ApplyTransactionsToAccounts(accounts, transactions);
+        TransactionProcessorCore.ApplyTransactionsToAccounts(accounts, transactions);
 
         account1.Balance.Should().Be(50.00M);
         account2.Balance.Should().Be(650.00M);
@@ -50,7 +50,7 @@ public sealed class TransactionProcessorTests
             new Transaction(accountNum1, new(2), 50.00M),
         ];
 
-        var action = () => TransactionProcessor.ApplyTransactionsToAccounts(accounts, transactions);
+        var action = () => TransactionProcessorCore.ApplyTransactionsToAccounts(accounts, transactions);
         action
           .Should().Throw<KeyNotFoundException>()
           .WithMessage("*The given key '0000000000000002' was not present*");
@@ -76,7 +76,7 @@ public sealed class TransactionProcessorTests
             new Transaction(accountNum2, accountNum1, 150.00M),
         ];
 
-        var action = () => TransactionProcessor.ApplyTransactionsToAccounts(accounts, transactions);
+        var action = () => TransactionProcessorCore.ApplyTransactionsToAccounts(accounts, transactions);
         action
           .Should().Throw<InvalidOperationException>()
           .WithMessage("ApplyToBalance: account 0000000000000001 has insufficient balance to subtract 150.00: current balance 130.00");

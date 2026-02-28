@@ -19,13 +19,13 @@ Building the repo requires the .NET 10 SDK, available at https://dotnet.microsof
 You can open the solution in Visual Studio (untested) or VSCode, or build and run it from the top-level directory:
 
 ```shell
-dotnet run --project SimpleBankingService -- --accountBalances SimpleBankingService.FunctionalTests\data\account_balances.csv --transactions SimpleBankingService.FunctionalTests\data\transactions.csv --output output.csv
+dotnet run --project SimpleBankingService -- processTransactions --accountBalances SimpleBankingService.FunctionalTests\data\account_balances.csv --transactions SimpleBankingService.FunctionalTests\data\transactions.csv -o output.csv
 ```
 
 To see all possible command-line arguments, run:
 
 ```shell
-dotnet run --project SimpleBankingService -- --help
+dotnet run --project SimpleBankingService -- processTransactions --help
 ```
 
 You can run all tests with:

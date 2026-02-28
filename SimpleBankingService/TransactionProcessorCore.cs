@@ -2,7 +2,7 @@ using SimpleBankingService.Models;
 
 namespace SimpleBankingService;
 
-public class TransactionProcessor
+public class TransactionProcessorCore
 {
     /// <summary>
     /// Applies simple transaction processing rules:
