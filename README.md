@@ -58,13 +58,13 @@ Here are a few possible directions for improvement:
 
 *   Support other file formats e.g. JSON or connecting to a SQL database.
 *   Add a date component to transactions and accounts to keep track of up to when transactions have been processed and to prevent duplicate processing.
-*   Add a client identifier to support keeping track of accounts for multiple clients.
-*   Add some limitations to balance precision (e.g. allow cents precision only).
+*   Add a client concept to support keeping track of accounts for multiple clients.
+*   Support limitations to balance precision (e.g. allow cents precision only).
 *   Add a currency concept and support for multiple currencies.
 *   Support for more advanced transaction processing rules. For example:
-    *   Allow transactions that temporarily put the account into negative balance as long as this is remedied by subsequent transactions in the same batch.
+    *   Allow transactions that temporarily put an account into negative balance as long as this is remedied by subsequent transactions in the same batch.
     *   Allow rejecting individual transactions instead of failing the whole processing. Keep track of rejected transactions in a separate file or table.
-*   API to process transactions in real time instead of in batches.
+*   Add an API to process transactions in real time instead of in batches.
 
 ## AI statement
 
