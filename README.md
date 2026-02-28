@@ -54,8 +54,6 @@ dotnet test
 
 ## Possible improvements
 
-Here are a few possible directions for improvement:
-
 *   Support other file formats e.g. JSON or connecting to a SQL database.
 *   Add a date component to transactions and accounts to keep track of up to when transactions have been processed and to prevent duplicate processing.
 *   Add a client concept to support keeping track of accounts for multiple clients.
@@ -65,7 +63,8 @@ Here are a few possible directions for improvement:
     *   Allow transactions that temporarily put an account into negative balance as long as this is remedied by subsequent transactions in the same batch.
     *   Allow rejecting individual transactions instead of failing the whole processing. Keep track of rejected transactions in a separate file or table.
 *   Add an API to process transactions in real time instead of in batches.
+*   AuthN / AuthZ and client separation.
 
 ## AI statement
 
-I did not use any AI tooling assistance during implementation (apart from AI results from normal search engine queries).
+I did not use any AI tooling assistance during implementation (apart from AI results from simple search engine queries).
