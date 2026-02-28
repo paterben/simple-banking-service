@@ -64,6 +64,7 @@ Here are a few possible directions for improvement:
 *   Support for more advanced transaction processing rules. For example:
     *   Allow transactions that temporarily put the account into negative balance as long as this is remedied by subsequent transactions in the same batch.
     *   Allow rejecting individual transactions instead of failing the whole processing. Keep track of rejected transactions in a separate file or table.
+*   API to process transactions in real time instead of in batches.
 
 ## AI statement
 
