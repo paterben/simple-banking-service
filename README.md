@@ -1,6 +1,6 @@
 # Simple banking service
 
-Implementation of a simple banking service.
+Implementation of a simple banking service, allowing to keep track of account balances and apply transactions between accounts.
 
 ## Features
 
