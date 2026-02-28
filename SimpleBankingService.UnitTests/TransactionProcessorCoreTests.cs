@@ -58,7 +58,7 @@ public sealed class TransactionProcessorCoreTests
 
     [TestMethod]
     // Note: In this test, if all transactions were applied, the ending balance of each account would be positive.
-    // However, each transaction is applied in order, and the second transaction causes account 2's balance to
+    // However, each transaction is applied in order, and the second transaction causes account 1's balance to
     // temporarily go below 0, so the processing fails.
     public void ApplyTransactionsToAccounts_WhenInsufficientBalance_Throws()
     {
